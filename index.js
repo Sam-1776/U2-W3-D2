@@ -6,7 +6,39 @@ window.addEventListener("DOMContentLoaded", () => {
   save.onclick = saveRegister;
   cancel.onclick = cancelRegister;
   loadName();
+  passedTime();
 });
+
+
+const passedTime = () =>{
+    let times = 0;
+    const timer = sessionStorage.getItem("timer")
+    let counter = parseInt(timer);
+    console.log( typeof timer);
+    
+    
+    if (timer === null) {
+        sessionStorage.setItem("timer" , times);
+        startTime(times);
+    } else{
+        continueTime(counter)
+    }
+
+}
+
+const continueTime = (x) =>{
+    setInterval(() => {
+        x++
+        sessionStorage.setItem("timer", x);
+    }, 1000);
+}
+
+const startTime =(x)=>{
+    setInterval(() => {
+        x++
+        sessionStorage.setItem("timer", x);
+    }, 1000);
+}
 
 const loadName = () =>{
     const main = document.querySelector("main");
