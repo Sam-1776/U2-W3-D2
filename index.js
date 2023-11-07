@@ -21,17 +21,11 @@ const passedTime = () =>{
         sessionStorage.setItem("timer" , times);
         startTime(times);
     } else{
-        continueTime(counter)
+        startTime(counter)
     }
 
 }
 
-const continueTime = (x) =>{
-    setInterval(() => {
-        x++
-        sessionStorage.setItem("timer", x);
-    }, 1000);
-}
 
 const startTime =(x)=>{
     setInterval(() => {
@@ -58,9 +52,12 @@ const saveRegister = (e) => {
   const name = textInput.value;
   console.log(name);
   localStorage.setItem("userName", name);
+  loadName();
 };
 
 const cancelRegister = (e) => {
   e.preventDefault();
   localStorage.removeItem("userName");
+  const item = document.querySelector("p");
+  item.remove();
 };
